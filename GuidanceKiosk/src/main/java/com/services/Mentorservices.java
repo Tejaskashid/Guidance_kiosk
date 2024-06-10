@@ -1,6 +1,7 @@
 package com.services;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.beans.Mentorbean;
@@ -47,5 +48,22 @@ public class Mentorservices {
         }
 
 		return "Registeration unsuccesfull";
+	}
+	public static boolean login(String email, String password){
+		
+		String query="SELECT * from mentorprofile WHERE email=? AND password= ?";
+		try {
+			PreparedStatement ps=DbConnection.connect().prepareStatement(query);
+			ps.setString(1,email);
+			ps.setString(2,password);
+			ResultSet rs=ps.executeQuery();
+			if(rs.next()){
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
 	}
 }	
