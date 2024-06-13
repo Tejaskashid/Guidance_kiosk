@@ -30,7 +30,7 @@ public class Mentorregserv extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 		String fname=request.getParameter("firstName");
-		String lname=request.getParameter("lastname");
+		String lname=request.getParameter("lastName");
 		String mentoremail=request.getParameter("email");
 		String mentorpassword=request.getParameter("password");
 		String jobtitle=request.getParameter("jobTitle");
